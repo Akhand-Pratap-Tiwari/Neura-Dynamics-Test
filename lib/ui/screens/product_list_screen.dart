@@ -33,7 +33,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             return Center(child: Text('Error: ${productController.error}'));
           } else {
             return ListView.builder(
-              padding: EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
               itemCount: productController.products.length,
               itemBuilder: (context, index) {
                 return ProductCard(product: productController.products[index]);

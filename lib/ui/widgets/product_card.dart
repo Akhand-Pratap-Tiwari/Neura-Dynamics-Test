@@ -14,7 +14,7 @@ class ProductCard extends StatelessWidget {
       elevation: 4,
       // surfaceTintColor: Colors.blueGrey,
       shape: OutlineInputBorder(
-        borderSide: BorderSide(color: Colors.black),
+        borderSide: const BorderSide(color: Colors.black),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
@@ -33,14 +33,14 @@ class ProductCard extends StatelessWidget {
                 children: [
                   Text(
                     'Category: ${product.category.name}',
-                    style: TextStyle(color: Colors.blueGrey),
+                    style: const TextStyle(color: Colors.blueGrey),
                   ),
                   Text(product.description),
                 ],
               ),
               trailing: Text(
                 '₹${product.price.toStringAsFixed(2)}',
-                style: TextStyle(fontSize: 16),
+                style: const TextStyle(fontSize: 16),
               ),
             ),
           ),
