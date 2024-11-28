@@ -7,10 +7,12 @@ import '../data/datasources/remote_data_source.dart';
 import 'ui/screens/product_list_screen.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const NeuraDemoApp());
 }
 
-class MyApp extends StatelessWidget {
+class NeuraDemoApp extends StatelessWidget {
+  const NeuraDemoApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MultiProvider(
@@ -31,7 +33,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ProductListScreen(),
+        home: const ProductListScreen(),
       ),
     );
   }
