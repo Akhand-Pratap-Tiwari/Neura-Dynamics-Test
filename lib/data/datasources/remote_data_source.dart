@@ -1,6 +1,7 @@
 
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../../utils/utils.dart';
 import '../models/product.dart';
 
 class RemoteDataSource {
@@ -9,7 +10,7 @@ class RemoteDataSource {
 
     if (response.statusCode == 200) {
       final List<dynamic> jsonList = jsonDecode(response.body);
-      return jsonList.map((json) => Product.fromJson(json)).toList();
+      return jsonList.map((json) => refine(Product.fromJson(json))).toList();
     } else {
       throw Exception('Failed to load products');
     }

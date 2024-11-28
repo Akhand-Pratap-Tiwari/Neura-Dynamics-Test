@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../controllers/product_controller.dart';
@@ -33,7 +32,7 @@ class NeuraDemoApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: const ProductListScreen(),
+        home: ProductListScreen(),
       ),
     );
   }
