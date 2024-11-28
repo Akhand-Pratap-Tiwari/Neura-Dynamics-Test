@@ -1,6 +1,6 @@
-
 import 'package:flutter/material.dart';
 import '../../data/models/product.dart';
+import 'image_slider.dart';
 
 class ProductCard extends StatelessWidget {
   final Product product;
@@ -9,20 +9,41 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    // var test_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkJEbqiXYbV2mdX3RmZvyYD9YwWjEo1k1q_UYQhGqOVvTtNKWTE7j57hUnaWrhoqtQHU&usqp=CAU";
     return Card(
-      child: Column( 
+      elevation: 4,
+      // surfaceTintColor: Colors.blueGrey,
+      shape: OutlineInputBorder(
+        borderSide: BorderSide(color: Colors.black),
+        borderRadius: BorderRadius.circular(16),
+      ),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
         children: [
-          Image.network(product.images.isNotEmpty ? product.images[0] : ''), // Display first image
-          ListTile(
-            title: Text(product.title),
-            subtitle: Text(product.description),
-            trailing: Text('₹${product.price.toStringAsFixed(2)}'),
+          SizedBox(
+              height: 100,
+              width: 100,
+              child: ImageSlider(imageUrls: product.images)),
+          Flexible(
+            child: ListTile(
+              isThreeLine: true,
+              title: Text(product.title),
+              subtitle: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Category: ${product.category.name}',
+                    style: TextStyle(color: Colors.blueGrey),
+                  ),
+                  Text(product.description),
+                ],
+              ),
+              trailing: Text(
+                '₹${product.price.toStringAsFixed(2)}',
+                style: TextStyle(fontSize: 16),
+              ),
+            ),
           ),
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text('Category: ${product.category.name}'),
-          ),
-          // ... add more widgets to display other fields
         ],
       ),
     );

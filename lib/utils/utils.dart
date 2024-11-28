@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:myapp/data/models/product.dart';
 
 String extractLink(String formattedString) {
@@ -28,4 +29,8 @@ Product refine(Product prod) {
     updatedAt: prod.updatedAt,
     category: prod.category
   );
+}
+
+void displayProduct(Product prod) {
+  debugPrint("debug: ${prod.images}");
 }

@@ -28,8 +28,9 @@ class NeuraDemoApp extends StatelessWidget {
         ),
       ],
       child: MaterialApp(
-        title: 'Flutter Demo',
+        title: 'Neura Dynamics Demo',
         theme: ThemeData(
+          useMaterial3: true,
           primarySwatch: Colors.blue,
         ),
         home: const ProductListScreen(),
