@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
           ListTile(
             title: Text(product.title),
             subtitle: Text(product.description),
-            trailing: Text('\$${product.price.toStringAsFixed(2)}'),
+            trailing: Text('₹${product.price.toStringAsFixed(2)}'),
           ),
           Padding(
             padding: const EdgeInsets.all(8.0),
