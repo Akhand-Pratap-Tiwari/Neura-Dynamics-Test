@@ -32,7 +32,7 @@ class NeuraDemoApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: ProductListScreen(),
+        home: const ProductListScreen(),
       ),
     );
   }
