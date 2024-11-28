@@ -1,0 +1,44 @@
+
+import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../controllers/product_controller.dart';
+import '../widgets/product_card.dart';
+
+class ProductListScreen extends StatefulWidget {
+  @override
+  _ProductListScreenState createState() => _ProductListScreenState();
+}
+
+class _ProductListScreenState extends State<ProductListScreen> {
+  @override
+  void initState() {
+    super.initState();
+    // Fetch products when the screen is initialized
+    Provider.of<ProductController>(context, listen: false).fetchProducts();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product List'),
+      ),
+      body: Consumer<ProductController>(
+        builder: (context, productController, child) {
+          if (productController.isLoading) {
+            return Center(child: CircularProgressIndicator());
+          } else if (productController.error != null) {
+            return Center(child: Text('Error: ${productController.error}'));
+          } else {
+            return ListView.builder(
+              itemCount: productController.products.length,
+              itemBuilder: (context, index) {
+                return ProductCard(product: productController.products[index]);
+              },
+            );
+          }
+        },
+      ),
+    );
+  }
+}
