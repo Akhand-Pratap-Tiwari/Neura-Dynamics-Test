@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import '../../controllers/product_controller.dart';
@@ -35,7 +34,7 @@ class _ProductListScreenState extends State<ProductListScreen> {
             return ListView.builder(
               itemCount: productController.products.length,
               itemBuilder: (context, index) {
-                return ProductCard(product: productController.products[index]);
+                return ProductCard(product: productController.products[index]); 
               },
             );
           }

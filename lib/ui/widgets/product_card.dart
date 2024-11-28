@@ -10,10 +10,20 @@ class ProductCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Card(
-      child: ListTile(
-        title: Text(product.title),
-        subtitle: Text(product.description),
-        trailing: Text('\$${product.price.toStringAsFixed(2)}'),
+      child: Column( 
+        children: [
+          Image.network(product.images.isNotEmpty ? product.images[0] : ''), // Display first image
+          ListTile(
+            title: Text(product.title),
+            subtitle: Text(product.description),
+            trailing: Text('\$${product.price.toStringAsFixed(2)}'),
+          ),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text('Category: ${product.category.name}'),
+          ),
+          // ... add more widgets to display other fields
+        ],
       ),
     );
   }

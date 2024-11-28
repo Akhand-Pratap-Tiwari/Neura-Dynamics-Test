@@ -1,6 +1,6 @@
 
 import 'package:http/http.dart' as http;
-import 'dart:convert'; 
+import 'dart:convert';
 import '../models/product.dart';
 
 class RemoteDataSource {
