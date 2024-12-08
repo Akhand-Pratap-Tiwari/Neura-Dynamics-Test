@@ -9,7 +9,8 @@ class ProductCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // var test_img = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkJEbqiXYbV2mdX3RmZvyYD9YwWjEo1k1q_UYQhGqOVvTtNKWTE7j57hUnaWrhoqtQHU&usqp=CAU";
+    // var testImg =
+    //     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMkJEbqiXYbV2mdX3RmZvyYD9YwWjEo1k1q_UYQhGqOVvTtNKWTE7j57hUnaWrhoqtQHU&usqp=CAU";
     return Card(
       elevation: 4,
       // surfaceTintColor: Colors.blueGrey,
@@ -17,34 +18,77 @@ class ProductCard extends StatelessWidget {
         borderSide: const BorderSide(color: Colors.black),
         borderRadius: BorderRadius.circular(16),
       ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          SizedBox(
-              height: 100,
-              width: 100,
-              child: ImageSlider(imageUrls: product.images)),
-          Flexible(
-            child: ListTile(
-              isThreeLine: true,
-              title: Text(product.title),
-              subtitle: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+      child: LayoutBuilder(
+        builder: (context, constraints) {
+          return Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Column(
                 children: [
-                  Text(
-                    'Category: ${product.category.name}',
-                    style: const TextStyle(color: Colors.blueGrey),
+                  Padding(
+                    padding: const EdgeInsets.fromLTRB(8.0, 8.0, 0, 0),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(8),
+                      child: SizedBox(
+                          height: 128,
+                          width: 128,
+                          // child: ImageSlider(imageUrls: [testImg])
+                          child: ImageSlider(imageUrls: product.images),
+                          ),
+                    ),
                   ),
-                  Text(product.description),
+                  Container(
+                    margin: const EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      color: Colors.blueGrey.shade100,
+                    ),
+                    child: Text(
+                      "${product.category.name}",
+                      style: TextStyle(color: Colors.blueGrey.shade600),
+                    ),
+                  ),
                 ],
               ),
-              trailing: Text(
-                '₹${product.price.toStringAsFixed(2)}',
-                style: const TextStyle(fontSize: 16),
+              Flexible(
+                child: ListTile(
+                  isThreeLine: true,
+                  title: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Flexible(
+                        child: Text(
+                          product.title,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.all(4),
+                        // margin: EdgeInsets.only(left: 2),
+                        decoration: BoxDecoration(
+                          color: Colors.purple.shade100,
+                          borderRadius: BorderRadius.circular(8),
+                        ),
+                        child: Text(
+                          '₹${product.price.toStringAsFixed(2)}',
+                          style: TextStyle(color: Colors.deepPurple),
+                        ),
+                      )
+                    ],
+                  ),
+                  subtitle: Text(
+                    product.description,
+                    maxLines: 6,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
               ),
-            ),
-          ),
-        ],
+            ],
+          );
+        },
       ),
     );
   }
